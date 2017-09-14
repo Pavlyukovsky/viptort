@@ -15,13 +15,13 @@ $this->title = 'Торты на заказ в Днепропетровске';
             ListView::widget([
                 'dataProvider' => $dataProvider,
                 'itemView' => '@app/views/cakes/_item.php',
-//                'layout'=>'{items}',
+                'layout'=>'{items}',
 //                'summary' => false,
             ])
             ?>
         </div>
 
-        <?= LinkPager::widget([ 'pagination' => $dataProvider->pagination]) ?>
+        <?= LinkPager::widget(['pagination' => $dataProvider->pagination]) ?>
 
     </div>
 </div>

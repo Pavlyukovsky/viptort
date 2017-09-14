@@ -65,6 +65,7 @@ class SiteController extends Controller
     {
         $searchModel = new CakeSearch();
         $dataProvider = $searchModel->search(Yii::$app->request->queryParams);
+
         return $this->render('index', ['dataProvider' => $dataProvider]);
     }
 
