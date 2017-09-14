@@ -4,7 +4,7 @@ use yii\widgets\LinkPager;
 
 /* @var $this yii\web\View */
 
-$this->title = 'My Yii Application';
+$this->title = 'Торты на заказ в Днепропетровске';
 ?>
 <div class="site-index">
 
