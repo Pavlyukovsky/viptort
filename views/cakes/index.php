@@ -34,6 +34,10 @@ $this->params['breadcrumbs'][] = $this->title;
                 'format'    => 'raw',
             ],
             [
+                'attribute' => 'description',
+                'format'    => 'raw',
+            ],
+            [
                 'attribute' => 'views',
                 'format'    => 'raw',
             ],

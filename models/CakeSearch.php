@@ -19,7 +19,7 @@ class CakeSearch extends Cake
     {
         return [
             [['id', 'views'], 'integer'],
-            [['name', 'image', 'created_at', 'updated_at'], 'safe'],
+            [['name', 'image', 'created_at', 'updated_at', 'description'], 'safe'],
         ];
     }
 
@@ -66,7 +66,8 @@ class CakeSearch extends Cake
         ]);
 
         $query->andFilterWhere(['like', 'name', $this->name])
-            ->andFilterWhere(['like', 'image', $this->image]);
+            ->andFilterWhere(['like', 'image', $this->image])
+            ->andFilterWhere(['like', 'description', $this->description]);
 
         return $dataProvider;
     }

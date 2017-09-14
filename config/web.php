@@ -38,6 +38,9 @@ $config = [
                 ],
             ],
         ],
+        'assetManager' => [
+            'forceCopy' => true
+        ],
         'db' => $db,
         'urlManager' => [
             'enablePrettyUrl' => true,
@@ -47,6 +50,13 @@ $config = [
                 '/logout' => '/site/logout',
                 '/about' => '/site/about',
                 '/contact' => '/site/contact',
+
+                '/cakes/index' => '/cakes/index',
+                '/cakes/create' => '/cakes/create',
+                '/cakes/update/<id>' => '/cakes/update',
+                '/cakes/delete/<id>' => '/cakes/delete',
+                '/cakes/delete-image/<id>' => '/cakes/delete-image',
+                '/cakes/<id>' => '/cakes/view',
             ],
         ],
         'formatter' => [

@@ -14,6 +14,7 @@ use yii\web\UploadedFile;
  * @property integer $views
  * @property string $created_at
  * @property string $updated_at
+ * @property string $description
  */
 class Cake extends \yii\db\ActiveRecord
 {
@@ -41,8 +42,8 @@ class Cake extends \yii\db\ActiveRecord
             [['views'], 'integer'],
             [['created_at', 'updated_at'], 'safe'],
             [['name', 'image'], 'string', 'max' => 255],
-            [['imageFile'], 'file', 'skipOnEmpty' => true, 'extensions' => 'png, jpg'],
-            [['image'], 'safe'],
+            [['imageFile'], 'file', 'skipOnEmpty' => true, 'extensions' => 'png, jpg, jpeg'],
+            [['image', 'description'], 'safe'],
         ];
     }
 
@@ -55,21 +56,50 @@ class Cake extends \yii\db\ActiveRecord
             'id' => 'ID',
             'name' => 'Name',
             'image' => 'Image',
+            'description' => 'Description',
             'views' => 'Views',
             'created_at' => 'Created At',
             'updated_at' => 'Updated At',
         ];
     }
 
+    /**
+     * Загрузка картинки.
+     * @return bool
+     */
     public function upload()
     {
         if ($this->validate()) {
-            $fileName = $this->imageFile->name;
+            if($this->imageFile == null){
+                return true;
+            }
+
+            $fileName = sprintf('%s.%s', uniqid(), $this->imageFile->extension);
             $this->imageFile->saveAs('uploads/' . $fileName, false);
             $this->image = $fileName;
             return true;
         } else {
             return false;
         }
+    }
+
+
+    /**
+     * Добавляем просмотр.
+     */
+    public function actionUpdateCounter()
+    {
+        $this->views++;
+        $this->save();
+    }
+
+    /**
+     * Получить URL картинки
+     * @return string
+     */
+    public function getImageUrl()
+    {
+        return sprintf("uploads/%s", $this->image);
+
     }
 }

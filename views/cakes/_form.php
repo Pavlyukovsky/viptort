@@ -14,6 +14,8 @@ use yii\widgets\ActiveForm;
 
     <?= $form->field($model, 'name')->textInput(['maxlength' => true]) ?>
 
+    <?= $form->field($model, 'description')->textarea() ?>
+
     <div class="form-group">
     <?php if (!$model->isNewRecord && $model->image !== ""): ?>
         <?= Html::a('Delete image', Yii::$app->urlManager->createUrl(['cakes/delete-image', 'id' => $model->id]), ['class' => 'btn btn-danger']); ?>

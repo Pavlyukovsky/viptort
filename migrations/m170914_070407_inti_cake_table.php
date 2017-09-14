@@ -12,6 +12,7 @@ class m170914_070407_inti_cake_table extends Migration
             'id' => $this->primaryKey(),
             'name' => $this->string()->notNull(),
             'image' => $this->string()->notNull(),
+            'description' => $this->text(),
             'views' => $this->integer()->defaultValue(0),
             'created_at' => $this->timestamp()->defaultExpression('NOW()'),
             'updated_at' => $this->timestamp()->defaultExpression('NOW()')

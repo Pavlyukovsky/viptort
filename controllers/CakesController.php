@@ -54,6 +54,19 @@ class CakesController extends Controller
     }
 
     /**
+     * @param $id
+     * @return string
+     */
+    public function actionView($id)
+    {
+        $model = $this->findModel($id);
+
+        $model->updateCounter();
+        return $this->render('view', ['model' => $model]);
+    }
+
+
+    /**
      * Creates a new Cake model.
      * If creation is successful, the browser will be redirected to the 'view' page.
      * @return mixed
