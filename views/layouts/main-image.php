@@ -28,7 +28,7 @@ AppAsset::register($this);
 <div class="wrap" style="background-image: url('https://static.pexels.com/photos/207962/pexels-photo-207962.jpeg');">
     <?php
     NavBar::begin([
-        'brandLabel' => 'My Company',
+        'brandLabel' => 'Торты на заказ в Днепропетровске',
         'brandUrl' => Yii::$app->homeUrl,
         'options' => [
             'class' => 'navbar-inverse navbar-fixed-top',

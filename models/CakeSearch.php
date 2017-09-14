@@ -50,6 +50,7 @@ class CakeSearch extends Cake
             'pagination' => [
                 'pageSize' => 18,
             ],
+            'sort' => ['defaultOrder' => ['created_at' => SORT_DESC]]
         ]);
 
         $this->load($params);
