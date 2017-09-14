@@ -63,6 +63,8 @@ class SiteController extends Controller
      */
     public function actionIndex()
     {
+        $this->layout = '@app/views/layouts/main-image.php';
+
         $searchModel = new CakeSearch();
         $dataProvider = $searchModel->search(Yii::$app->request->queryParams);
 

@@ -25,7 +25,7 @@ AppAsset::register($this);
 <body>
 <?php $this->beginBody() ?>
 
-<div class="wrap">
+<div class="wrap" style="background-image: url('https://static.pexels.com/photos/207962/pexels-photo-207962.jpeg');">
     <?php
     NavBar::begin([
         'brandLabel' => 'My Company',
