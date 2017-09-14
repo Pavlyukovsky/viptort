@@ -87,7 +87,7 @@ class Cake extends \yii\db\ActiveRecord
     /**
      * Добавляем просмотр.
      */
-    public function actionUpdateCounter()
+    public function updateCounter()
     {
         $this->views++;
         $this->save();
