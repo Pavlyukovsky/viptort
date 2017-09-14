@@ -4,30 +4,27 @@ use yii\db\Migration;
 
 class m170914_070407_inti_cake_table extends Migration
 {
+    const CAKES_TABLE_NAME = "{{%cakes}}";
+
     public function safeUp()
     {
+        $this->createTable(self::CAKES_TABLE_NAME, [
+            'id' => $this->primaryKey(),
+            'name' => $this->string(),
+            'image' => $this->string(),
+            'views' => $this->integer(),
+            'created_at' => $this->timestamp()->defaultExpression('NOW()'),
+            'updated_at' => $this->timestamp()->defaultExpression('NOW()')
+        ]);
 
+        return true;
     }
 
     public function safeDown()
     {
-        echo "m170914_070407_inti_cake_table cannot be reverted.\n";
+        $this->dropTable(self::CAKES_TABLE_NAME);
 
-        return false;
+        return true;
     }
 
-    /*
-    // Use up()/down() to run migration code without a transaction.
-    public function up()
-    {
-
-    }
-
-    public function down()
-    {
-        echo "m170914_070407_inti_cake_table cannot be reverted.\n";
-
-        return false;
-    }
-    */
 }
