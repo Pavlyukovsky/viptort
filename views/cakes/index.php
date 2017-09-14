@@ -9,7 +9,7 @@ use app\models\Cake;
 /* @var $searchModel app\models\CakeSearch */
 /* @var $dataProvider yii\data\ActiveDataProvider */
 
-$this->title = 'Cakes';
+$this->title = 'Торты';
 $this->params['breadcrumbs'][] = $this->title;
 ?>
 <div class="cake-index">
@@ -17,7 +17,7 @@ $this->params['breadcrumbs'][] = $this->title;
     <h1><?= Html::encode($this->title) ?></h1>
 
     <p>
-        <?= Html::a('Create Cake', ['create'], ['class' => 'btn btn-success']) ?>
+        <?= Html::a('Создать торт', ['create'], ['class' => 'btn btn-success']) ?>
     </p>
 <?php Pjax::begin(); ?>    <?= GridView::widget([
         'dataProvider' => $dataProvider,

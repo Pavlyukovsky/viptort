@@ -4,7 +4,7 @@ use app\models\Cake;
 /* @var $this yii\web\View */
 /* @var $model Cake */
 
-$this->title = 'Cakes';
+$this->title = sprintf('Торт "%s"', $model->name);
 $this->params['breadcrumbs'][] = $this->title;
 ?>
 <div class="cake-index">

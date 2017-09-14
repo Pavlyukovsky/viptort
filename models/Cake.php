@@ -53,13 +53,13 @@ class Cake extends \yii\db\ActiveRecord
     public function attributeLabels()
     {
         return [
-            'id' => 'ID',
-            'name' => 'Name',
-            'image' => 'Image',
-            'description' => 'Description',
-            'views' => 'Views',
-            'created_at' => 'Created At',
-            'updated_at' => 'Updated At',
+            'id' => 'Ид',
+            'name' => 'Название',
+            'image' => 'Изображение',
+            'description' => 'Описание',
+            'views' => 'Просмотры',
+            'created_at' => 'Создано',
+            'updated_at' => 'Обновлено',
         ];
     }
 

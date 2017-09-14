@@ -179,17 +179,19 @@ a.desc:after {
 .view-cake {
     text-align: center;
 }
-.view-cake img{
+
+.view-cake img {
     vertical-align: middle;
     max-width: 100%;
     max-height: 500px;
 }
 
-.view-cake-description{
+.view-cake-description {
     margin: 20px;
     padding: 20px;
     border-top: 1px solid #e8ecf2;
 }
-.view-cake-description .title{
+
+.view-cake-description .title {
     font-size: 18px;
 }
