@@ -61,8 +61,8 @@ class CakesController extends Controller
     {
         $model = new Cake();
 
-        $model->created_at = time();
-        $model->updated_at = time();
+        $model->created_at = Yii::$app->formatter->asDatetime(time());
+        $model->updated_at = Yii::$app->formatter->asDatetime(time());
         if ($model->load(Yii::$app->request->post()) && $model->save()) {
             return $this->redirect(['index']);
         } else {
@@ -82,7 +82,7 @@ class CakesController extends Controller
     {
         $model = $this->findModel($id);
 
-        $model->updated_at = time();
+        $model->updated_at = Yii::$app->formatter->asDatetime(time());
         if ($model->load(Yii::$app->request->post()) && $model->save()) {
             return $this->redirect(['index']);
         } else {

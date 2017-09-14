@@ -30,6 +30,7 @@ class Cake extends \yii\db\ActiveRecord
     public function rules()
     {
         return [
+            [['name', 'image'], 'required'],
             [['views'], 'integer'],
             [['created_at', 'updated_at'], 'safe'],
             [['name', 'image'], 'string', 'max' => 255],
