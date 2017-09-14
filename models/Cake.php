@@ -75,8 +75,16 @@ class Cake extends \yii\db\ActiveRecord
             }
 
             $fileName = sprintf('%s.%s', uniqid(), $this->imageFile->extension);
-            $this->imageFile->saveAs('uploads/' . $fileName, false);
+            $filePath = sprintf('uploads/%s', $fileName);
+
+            $this->imageFile->saveAs($filePath, false);
             $this->image = $fileName;
+
+            // Делаем меньшую копию
+            $image = new SimpleImage();
+            $image->load($filePath);
+            $image->resizeToWidth(200);
+            $image->save(sprintf('uploads/%s%s', '200_w_', $fileName));
             return true;
         } else {
             return false;
@@ -95,10 +103,15 @@ class Cake extends \yii\db\ActiveRecord
 
     /**
      * Получить URL картинки
+     * @param $wight integer
      * @return string
      */
-    public function getImageUrl()
+    public function getImageUrl($wight = null)
     {
+        if($wight){
+            //Берем картинку уменшеную
+            return sprintf("uploads/%s_w_%s", $wight, $this->image);
+        }
         return sprintf("uploads/%s", $this->image);
 
     }

@@ -7,7 +7,7 @@ use app\models\Cake;
     <a href="<?= Yii::$app->urlManager->createUrl(['cakes/view', 'id' => $model->id]); ?>" class="item"
        style="display: block">
         <div class="title"><?= $model->name; ?></div>
-        <div class="cake-img" style="background-image: url('/<?= $model->getImageUrl() ?>');">
+        <div class="cake-img" style="background-image: url('/<?= $model->getImageUrl(200) ?>');">
         </div>
         <div class="views"><span class="glyphicon glyphicon-eye-open" aria-hidden="true"></span> <?= $model->views; ?>
         </div>
