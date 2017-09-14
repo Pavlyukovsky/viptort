@@ -2,7 +2,7 @@
 
 namespace app\controllers;
 
-use app\models\Cake;
+use app\models\CakeSearch;
 use Yii;
 use yii\filters\AccessControl;
 use yii\web\Controller;
@@ -62,8 +62,9 @@ class SiteController extends Controller
      */
     public function actionIndex()
     {
-        $models = Cake::find()->all();
-        return $this->render('index', ['models' => $models]);
+        $searchModel = new CakeSearch();
+        $dataProvider = $searchModel->search(Yii::$app->request->queryParams);
+        return $this->render('index', ['dataProvider' => $dataProvider]);
     }
 
     /**

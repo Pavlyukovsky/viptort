@@ -8,6 +8,7 @@ use app\models\CakeSearch;
 use yii\web\Controller;
 use yii\web\NotFoundHttpException;
 use yii\filters\VerbFilter;
+use yii\web\UploadedFile;
 
 /**
  * CakeController implements the CRUD actions for Cake model.
@@ -63,13 +64,16 @@ class CakesController extends Controller
 
         $model->created_at = Yii::$app->formatter->asDatetime(time());
         $model->updated_at = Yii::$app->formatter->asDatetime(time());
-        if ($model->load(Yii::$app->request->post()) && $model->save()) {
-            return $this->redirect(['index']);
-        } else {
-            return $this->render('create', [
-                'model' => $model,
-            ]);
+
+        if ($model->load(Yii::$app->request->post())) {
+            $model->imageFile = UploadedFile::getInstance($model, 'imageFile');
+            if($model->upload() && $model->save()){
+                return $this->redirect(['index']);
+            }
         }
+        return $this->render('create', [
+            'model' => $model,
+        ]);
     }
 
     /**
@@ -83,13 +87,16 @@ class CakesController extends Controller
         $model = $this->findModel($id);
 
         $model->updated_at = Yii::$app->formatter->asDatetime(time());
-        if ($model->load(Yii::$app->request->post()) && $model->save()) {
-            return $this->redirect(['index']);
-        } else {
-            return $this->render('update', [
-                'model' => $model,
-            ]);
+
+        if ($model->load(Yii::$app->request->post())) {
+            $model->imageFile = UploadedFile::getInstance($model, 'imageFile');
+            if($model->upload() && $model->save()){
+                return $this->redirect(['index']);
+            }
         }
+        return $this->render('update', [
+            'model' => $model,
+        ]);
     }
 
     /**
@@ -103,6 +110,15 @@ class CakesController extends Controller
         $this->findModel($id)->delete();
 
         return $this->redirect(['index']);
+    }
+
+    public function actionDeleteImage($id)
+    {
+        $model = $this->findModel($id);
+        $model->image = '';
+        $model->updated_at = Yii::$app->formatter->asDatetime(time());
+        $model->save();
+        return $this->redirect(['update', 'id' => $id]);
     }
 
     /**

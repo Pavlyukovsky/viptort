@@ -3,6 +3,7 @@
 namespace app\models;
 
 use Yii;
+use yii\web\UploadedFile;
 
 /**
  * This is the model class for table "cakes".
@@ -16,6 +17,12 @@ use Yii;
  */
 class Cake extends \yii\db\ActiveRecord
 {
+
+    /**
+     * @var UploadedFile;
+     */
+    public $imageFile;
+
     /**
      * @inheritdoc
      */
@@ -30,10 +37,12 @@ class Cake extends \yii\db\ActiveRecord
     public function rules()
     {
         return [
-            [['name', 'image'], 'required'],
+            [['name'], 'required'],
             [['views'], 'integer'],
             [['created_at', 'updated_at'], 'safe'],
             [['name', 'image'], 'string', 'max' => 255],
+            [['imageFile'], 'file', 'skipOnEmpty' => true, 'extensions' => 'png, jpg'],
+            [['image'], 'safe'],
         ];
     }
 
@@ -50,5 +59,17 @@ class Cake extends \yii\db\ActiveRecord
             'created_at' => 'Created At',
             'updated_at' => 'Updated At',
         ];
+    }
+
+    public function upload()
+    {
+        if ($this->validate()) {
+            $fileName = $this->imageFile->name;
+            $this->imageFile->saveAs('uploads/' . $fileName, false);
+            $this->image = $fileName;
+            return true;
+        } else {
+            return false;
+        }
     }
 }
