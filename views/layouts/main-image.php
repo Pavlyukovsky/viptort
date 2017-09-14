@@ -39,7 +39,6 @@ AppAsset::register($this);
         'items' => [
             Yii::$app->user->isGuest ? '' : (['label' => 'Торты', 'url' => ['/cakes']]),
             ['label' => 'Главная', 'url' => ['/']],
-            ['label' => 'О нас', 'url' => ['/site/about']],
             ['label' => 'Контакты', 'url' => ['/site/contact']],
             Yii::$app->user->isGuest ? (
                 ['label' => 'Войти', 'url' => ['/site/login']]
