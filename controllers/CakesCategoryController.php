@@ -64,7 +64,7 @@ class CakesCategoryController extends Controller
             'sort' => ['defaultOrder' => ['created_at' => SORT_DESC]]
         ]);
 
-        return $this->render('view', ['dataProvider' => $dataProvider]);
+        return $this->render('view', ['dataProvider' => $dataProvider, 'category' => $model]);
     }
 
     /**

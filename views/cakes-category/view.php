@@ -1,10 +1,12 @@
 <?php
 use yii\widgets\ListView;
 use yii\widgets\LinkPager;
+use app\models\CakesCategory;
 
 /* @var $this yii\web\View */
+/* @var $category CakesCategory */
 
-$this->title = 'Торты на заказ в Днепропетровске';
+$this->title = sprintf('Торты на заказ в Днепропетровске - категория - %s', $category->name);
 ?>
 <div class="site-index">
 
