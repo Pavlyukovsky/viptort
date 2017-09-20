@@ -2,6 +2,7 @@
 
 use yii\helpers\Html;
 use yii\widgets\ActiveForm;
+use app\models\CakesCategory;
 
 /* @var $this yii\web\View */
 /* @var $model app\models\Cake */
@@ -13,6 +14,8 @@ use yii\widgets\ActiveForm;
     <?php $form = ActiveForm::begin(['options' => ['enctype' => 'multipart/form-data']]); ?>
 
     <?= $form->field($model, 'name')->textInput(['maxlength' => true]) ?>
+
+    <?= $form->field($model, 'category_id')->dropDownList(CakesCategory::getCategoryList()) ?>
 
     <?= $form->field($model, 'description')->textarea() ?>
 

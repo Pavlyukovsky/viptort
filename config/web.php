@@ -58,6 +58,7 @@ $config = [
                 '/cakes/delete/<id>' => '/cakes/delete',
                 '/cakes/delete-image/<id>' => '/cakes/delete-image',
                 '/cakes/<id>' => '/cakes/view',
+                '/category/<alias>' => '/cakes-category/view'
             ],
         ],
         'formatter' => [

@@ -8,6 +8,7 @@ use yii\bootstrap\Nav;
 use yii\bootstrap\NavBar;
 use yii\widgets\Breadcrumbs;
 use app\assets\AppAsset;
+use app\components\CategoriesList;
 
 AppAsset::register($this);
 ?>
@@ -38,6 +39,7 @@ AppAsset::register($this);
         'options' => ['class' => 'navbar-nav navbar-right'],
         'items' => [
             Yii::$app->user->isGuest ? '' : (['label' => 'Торты', 'url' => ['/cakes']]),
+            Yii::$app->user->isGuest ? '' : (['label' => 'Категории тортов', 'url' => ['/cakes-category']]),
             ['label' => 'Главная', 'url' => ['/']],
             ['label' => 'Контакты', 'url' => ['/site/contact']],
             Yii::$app->user->isGuest ? (
@@ -58,10 +60,17 @@ AppAsset::register($this);
     ?>
 
     <div class="container">
-        <?= Breadcrumbs::widget([
-            'links' => isset($this->params['breadcrumbs']) ? $this->params['breadcrumbs'] : [],
-        ]) ?>
-        <?= $content ?>
+        <div class="row">
+            <div class="left-sidebar col-md-2">
+                <?= CategoriesList::widget(); ?>
+            </div>
+            <div class="center col-md-10">
+                <?= Breadcrumbs::widget([
+                    'links' => isset($this->params['breadcrumbs']) ? $this->params['breadcrumbs'] : [],
+                ]) ?>
+                <?= $content ?>
+            </div>
+        </div>
     </div>
 </div>
 

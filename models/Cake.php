@@ -10,11 +10,14 @@ use yii\web\UploadedFile;
  *
  * @property integer $id
  * @property string $name
+ * @property integer $category_id
  * @property string $image
  * @property integer $views
  * @property string $created_at
  * @property string $updated_at
  * @property string $description
+ *
+ * @property CakesCategory[] $cakesCategory
  */
 class Cake extends \yii\db\ActiveRecord
 {
@@ -38,8 +41,8 @@ class Cake extends \yii\db\ActiveRecord
     public function rules()
     {
         return [
-            [['name'], 'required'],
-            [['views'], 'integer'],
+            [['name', 'category_id'], 'required'],
+            [['views', 'category_id'], 'integer'],
             [['created_at', 'updated_at'], 'safe'],
             [['name', 'image'], 'string', 'max' => 255],
             [['imageFile'], 'file', 'skipOnEmpty' => true, 'extensions' => 'png, jpg, jpeg'],
@@ -55,6 +58,7 @@ class Cake extends \yii\db\ActiveRecord
         return [
             'id' => 'Ид',
             'name' => 'Название',
+            'category_id' => 'Категория',
             'image' => 'Изображение',
             'description' => 'Описание',
             'views' => 'Просмотры',
@@ -113,6 +117,13 @@ class Cake extends \yii\db\ActiveRecord
             return sprintf("uploads/%s_w_%s", $wight, $this->image);
         }
         return sprintf("uploads/%s", $this->image);
+    }
 
+    /**
+     * @return \yii\db\ActiveQuery
+     */
+    public function getCakesCategory()
+    {
+        return $this->hasOne(CakesCategory::className(), ['id' => 'category_id']);
     }
 }
