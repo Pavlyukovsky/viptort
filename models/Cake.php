@@ -17,7 +17,7 @@ use yii\web\UploadedFile;
  * @property string $updated_at
  * @property string $description
  *
- * @property CakesCategory[] $cakesCategory
+ * @property CakesCategory $cakesCategory
  */
 class Cake extends \yii\db\ActiveRecord
 {

@@ -4,6 +4,7 @@ use yii\helpers\Html;
 use yii\grid\GridView;
 use yii\widgets\Pjax;
 use app\models\Cake;
+use app\models\CakesCategory;
 
 /* @var $this yii\web\View */
 /* @var $searchModel app\models\CakeSearch */
@@ -19,7 +20,8 @@ $this->params['breadcrumbs'][] = $this->title;
     <p>
         <?= Html::a('Создать торт', ['create'], ['class' => 'btn btn-success']) ?>
     </p>
-<?php Pjax::begin(); ?>    <?= GridView::widget([
+<?php Pjax::begin(); ?>
+    <?= GridView::widget([
         'dataProvider' => $dataProvider,
         'filterModel' => $searchModel,
         'columns' => [
@@ -28,6 +30,17 @@ $this->params['breadcrumbs'][] = $this->title;
             [
                 'attribute' => 'name',
                 'format'    => 'raw',
+            ],
+            [
+                'label' => 'Категория (id)',
+                'attribute' => 'category_id',
+                'format'    => 'raw',
+                'value'     => function (Cake $model){
+                    if(isset($model->cakesCategory)){
+                        return sprintf('%s (id: %s)', $model->cakesCategory->name, $model->id);
+                    }
+                    return null;
+                }
             ],
             [
                 'attribute' => 'image',

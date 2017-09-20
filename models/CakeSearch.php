@@ -18,7 +18,7 @@ class CakeSearch extends Cake
     public function rules()
     {
         return [
-            [['id', 'views'], 'integer'],
+            [['id', 'views', 'category_id'], 'integer'],
             [['name', 'image', 'created_at', 'updated_at', 'description'], 'safe'],
         ];
     }
@@ -67,6 +67,7 @@ class CakeSearch extends Cake
             'views' => $this->views,
             'created_at' => $this->created_at,
             'updated_at' => $this->updated_at,
+            'category_id' => $this->category_id,
         ]);
 
         $query->andFilterWhere(['like', 'name
