@@ -10,7 +10,7 @@ use app\models\CakesCategory;
 <div id="" class="sidebar-category ">
     <div class="category-title" style="margin-bottom: 10px;">
 
-        <span class="panel-title h4"><?= Yii::t('app', 'Категоии тортов') ?></span>
+        <span class="panel-title h4"><?= Yii::t('app', 'Галерея тортиков') ?></span>
 
     </div>
 
